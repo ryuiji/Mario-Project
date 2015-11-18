@@ -4,48 +4,42 @@ using System.Collections;
 public class Enemy : MonoBehaviour {
 
     public int moveSpeed;
-    public bool faceWay;
     public int life;
+    public RaycastHit rightHit;
+    public RaycastHit leftHit;
+    public float hitDis;
 
 
     void Start() {
-        faceWay = true;
         life = 1;
     }
 
 
     void Update() {
         Move();
-        flip();
         lifes();
-        
     }
 
 
     void Move() {
-        if (transform.position.x <= -2.5) {
-            moveSpeed = 5;
-            faceWay = true;
-
+        Vector3 right = transform.TransformDirection(Vector3.right);
+        if (Physics.Raycast(transform.position, right, out rightHit, hitDis)) {
+            if (rightHit.transform.tag == "Pipe") {
+                moveSpeed = -5;
+            }
         }
-        if (transform.position.x >= 2.5) {
-            moveSpeed = -5;
-            faceWay = false;
+            Vector3 left = transform.TransformDirection(Vector3.left);
+        if (Physics.Raycast(transform.position, left, out leftHit, hitDis)) {
+            if (leftHit.transform.tag == "Pipe") {
+                moveSpeed = 5;
+            }
         }
-        transform.Translate(moveSpeed * Time.deltaTime, 0, 0);
-    }
-
-
-    void flip() {
-        if(faceWay == true){
-            transform.localScale = new Vector3(-1, transform.localScale.y, transform.localScale.z);
-        } else {
-            transform.localScale = new Vector3(1, transform.localScale.y, transform.localScale.z);
+            transform.Translate(moveSpeed * Time.deltaTime, 0, 0);
         }
-    }
-    void lifes() {
-        if (life == 0) {
-            Destroy(gameObject);
+
+        void lifes() {
+            if (life == 0) {
+                Destroy(gameObject);
+            }
         }
     }
-}

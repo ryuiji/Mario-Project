@@ -52,10 +52,10 @@ public class Movement : MonoBehaviour {
     }
     void flip() {
         if (wayFacing == false) {
-            transform.localScale = new Vector3(-1, transform.localScale.y, transform.localScale.z);
+            transform.localScale = new Vector3(-0.6934221f, transform.localScale.y, transform.localScale.z);
         }
         if (wayFacing == true) {
-            transform.localScale = new Vector3(1, transform.localScale.y, transform.localScale.z);
+            transform.localScale = new Vector3(0.6934221f, transform.localScale.y, transform.localScale.z);
         }
     }
     void jump() {
