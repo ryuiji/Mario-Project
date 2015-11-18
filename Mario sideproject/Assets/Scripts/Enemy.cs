@@ -5,16 +5,20 @@ public class Enemy : MonoBehaviour {
 
     public int moveSpeed;
     public bool faceWay;
+    public int life;
 
 
     void Start() {
         faceWay = true;
+        life = 1;
     }
 
 
     void Update() {
         Move();
         flip();
+        lifes();
+        
     }
 
 
@@ -37,6 +41,11 @@ public class Enemy : MonoBehaviour {
             transform.localScale = new Vector3(-1, transform.localScale.y, transform.localScale.z);
         } else {
             transform.localScale = new Vector3(1, transform.localScale.y, transform.localScale.z);
+        }
+    }
+    void lifes() {
+        if (life == 0) {
+            Destroy(gameObject);
         }
     }
 }
