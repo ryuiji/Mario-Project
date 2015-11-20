@@ -13,6 +13,7 @@ public class MarioDamage : MonoBehaviour {
 
 
     void Update() {
+        hitDis = GetComponent<Movement>().groundDis;
         Vector3 down = transform.TransformDirection(Vector3.down);
         if (Physics.Raycast(transform.position, down, out downHit, hitDis)){
             if (downHit.transform.tag == "Enemy") {
