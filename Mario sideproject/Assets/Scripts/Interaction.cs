@@ -4,7 +4,6 @@ using System.Collections;
 public class Interaction : MonoBehaviour {
 
     public RaycastHit upHit;
-    public RaycastHit rayHit;
     public GameObject shroomPrefab;
     public bool stopSpawn;
 

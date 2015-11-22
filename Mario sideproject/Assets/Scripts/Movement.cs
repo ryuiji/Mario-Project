@@ -27,10 +27,12 @@ public class Movement : MonoBehaviour {
 
     void Update() {
 
-        x = transform.position.x;
-        mainCamera.transform.position = new Vector3 (x, mainCamera.transform.position.y, mainCamera.transform.position.z);
         movement();
         flip();
+
+        x = transform.position.x;
+        mainCamera.transform.position = new Vector3 (x, mainCamera.transform.position.y, mainCamera.transform.position.z);
+
 
         if (Input.GetButtonDown("Jump")) {
             if (Physics.Raycast(transform.position, Vector3.down, groundDis))

@@ -14,7 +14,6 @@ public class MarioStats : MonoBehaviour {
         lifes = 1;
     }
 
-
     void Update() {
         Vector3 left = transform.TransformDirection(Vector3.left);
         Vector3 right = transform.TransformDirection(Vector3.right);
